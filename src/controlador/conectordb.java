@@ -17,7 +17,7 @@ import vista.LOG;
 
 /**
  *
- * @author pc konesh 1
+ * @author Benjamín Flores Galindo
  */
 public class conectordb {
     
@@ -50,11 +50,17 @@ public class conectordb {
             conexion = null;
         } finally {
 //            JOptionPane.showMessageDialog(null, "Conexión Exitosa");
+//            System.out.println("Conexión Exitosa");
             return conexion;
         }
     }
     
-    public int validador(String usr, String pass){
+    private void Closeconnectiondb() throws SQLException{
+        conexion.close();
+//        System.out.println("Conexión a db cerrada");
+    }
+    
+    public int validador(String usr, String pass) throws SQLException{
         String usrdb, passdb;
         int acceso = 0; 
         try {
@@ -73,6 +79,7 @@ public class conectordb {
         } catch (SQLException e) {
             Logger.getLogger(LOG.class.getName()).log(Level.SEVERE, null, e);
         }
+        Closeconnectiondb();
         return acceso;
     }
     

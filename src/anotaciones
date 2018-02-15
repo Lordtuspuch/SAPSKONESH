@@ -1,0 +1,47 @@
+//        String usr, pass;
+//        String usrdb, passdb;
+//        usr = txtuser.getText();
+//        pass = txtpass.getText();
+//        int acceso = 0;
+//        try {
+//            conectordb db = new conectordb();
+//            db.MySQLConnect();
+////            String nametabla = "login";
+////            String Query = "SELECT * FROM login WHERE loginUsuario = '" + usr + "' AND loginPass = '" + pass + "'";
+//            String Query = "SELECT * FROM login WHERE loginUsuario = '" + usr + "' AND loginPass = '" + pass + "'";
+//            db.comando = db.conexion.createStatement();
+//            db.registro = db.comando.executeQuery(Query);
+//            if(db.registro.next()){
+//                acceso = 1;
+//            
+//            }
+//            while (db.registro.next()) {
+//                usrdb = db.registro.getString(2);
+//                passdb = db.registro.getString(3);
+//                System.out.println("Id: " + db.registro.getInt(1) +
+//                    "\nUSER: " + db.registro.getNString(2) +
+//                    "\nPASS: " + db.registro.getNString(3));
+//                System.out.println("-----------------------------------");
+//                System.out.println("Usuario: " + usrdb);
+//                System.out.println("Contraseña: " + passdb);
+//            }
+//        } catch (SQLException e) {
+//            Logger.getLogger(LOG.class.getName()).log(Level.SEVERE, null, e);
+//        }
+
+
+
+
+
+
+
+
+
+//Consulta de accesos
+SELECT `empresaRazonSocial`, `clienteGerenteUser`, `clienteGerentePass`, `usuarioSicumpleUsuario`, `usuarioSicumplePass` FROM (koneshpoliza.empresa inner join koneshpoliza.usuariosicumple on empresaId = empresa_empresaId)inner join koneshpoliza.cliente on clienteId = cliente_clienteId;
+
+/*
+   *Quitar container de JInternalFrame 
+    private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI) getUI()).getNorthPane();
+    Barra.getComponent(0).setVisible(false);
+*/

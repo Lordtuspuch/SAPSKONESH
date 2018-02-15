@@ -15,18 +15,16 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author pc konesh 1
+ * @author Benjamín Flores Galindo
  */
 public class LOG extends javax.swing.JFrame {
 
 
-    
+    private final PRINCIPAL prin = new PRINCIPAL();
     public LOG() {
         initComponents();
         
     }
-
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -124,45 +122,21 @@ public class LOG extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         conectordb db = new conectordb();
-//        String usr, pass;
-//        String usrdb, passdb;
-//        usr = txtuser.getText();
-//        pass = txtpass.getText();
-//        int acceso = 0;
-//        try {
-//            conectordb db = new conectordb();
-//            db.MySQLConnect();
-////            String nametabla = "login";
-////            String Query = "SELECT * FROM login WHERE loginUsuario = '" + usr + "' AND loginPass = '" + pass + "'";
-//            String Query = "SELECT * FROM login WHERE loginUsuario = '" + usr + "' AND loginPass = '" + pass + "'";
-//            db.comando = db.conexion.createStatement();
-//            db.registro = db.comando.executeQuery(Query);
-//            if(db.registro.next()){
-//                acceso = 1;
-//            
-//            }
-//            while (db.registro.next()) {
-//                usrdb = db.registro.getString(2);
-//                passdb = db.registro.getString(3);
-//                System.out.println("Id: " + db.registro.getInt(1) +
-//                    "\nUSER: " + db.registro.getNString(2) +
-//                    "\nPASS: " + db.registro.getNString(3));
-//                System.out.println("-----------------------------------");
-//                System.out.println("Usuario: " + usrdb);
-//                System.out.println("Contraseña: " + passdb);
-//            }
-//        } catch (SQLException e) {
-//            Logger.getLogger(LOG.class.getName()).log(Level.SEVERE, null, e);
-//        }
         String usr = txtuser.getText();
         String pass = txtpass.getText();
-        if(db.validador(usr, pass)==1){
-            JOptionPane.showMessageDialog(null, "Bienvenido\n Has ingresado "
-                + "satisfactoriamente al sistema", "Mensaje de bienvenida",
-                JOptionPane.INFORMATION_MESSAGE);
-            labelnotifi.setText("");
-        }else {
-        labelnotifi.setText("ERROR INGRESO NO AUTORIZADO");
+        try {
+            if(db.validador(usr, pass)==1){
+                prin.setVisible(true);
+                this.setVisible(false);
+//            JOptionPane.showMessageDialog(null, "Bienvenido\n Has ingresado "
+//                + "satisfactoriamente al sistema", "Mensaje de bienvenida",
+//                JOptionPane.INFORMATION_MESSAGE);
+//            labelnotifi.setText("");
+            }else {
+                labelnotifi.setText("ERROR INGRESO NO AUTORIZADO");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LOG.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
