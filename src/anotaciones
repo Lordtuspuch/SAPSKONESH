@@ -43,5 +43,5 @@ SELECT `empresaRazonSocial`, `clienteGerenteUser`, `clienteGerentePass`, `usuari
 /*
    *Quitar container de JInternalFrame 
     private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI) getUI()).getNorthPane();
-    Barra.getComponent(0).setVisible(false);
+    Barra.remove(0);
 */

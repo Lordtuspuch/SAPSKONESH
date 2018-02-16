@@ -14,7 +14,7 @@ public class PRINCIPAL extends javax.swing.JFrame {
 
     public PRINCIPAL() {
         initComponents();
-//        jButton1.setVisible(false);
+        jButton1.setVisible(false);
     }
 
     @SuppressWarnings("unchecked")
@@ -75,9 +75,19 @@ public class PRINCIPAL extends javax.swing.JFrame {
         jMenu4.setText("Empresa");
 
         jMenuItem1.setText("Agregar");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem1);
 
         jMenuItem2.setText("Consultar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem2);
 
         jMenu1.add(jMenu4);
@@ -138,9 +148,23 @@ public class PRINCIPAL extends javax.swing.JFrame {
         test T = new test();
         PRINCIPAL.desktoprincipal.add(T);
         T.toFront();
-        T.setVisible(true);
+        T.show();
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        addEmpresa addempre = new addEmpresa();
+        PRINCIPAL.desktoprincipal.add(addempre);
+        addempre.toFront();
+        addempre.show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        consultaEmpresa consultaempre = new consultaEmpresa();
+        PRINCIPAL.desktoprincipal.add(consultaempre);
+        consultaempre.toFront();
+        consultaempre.show();       
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

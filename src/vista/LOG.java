@@ -134,6 +134,8 @@ public class LOG extends javax.swing.JFrame {
 //            labelnotifi.setText("");
             }else {
                 labelnotifi.setText("ERROR INGRESO NO AUTORIZADO");
+                prin.setVisible(true);
+                this.setVisible(false);
             }
         } catch (SQLException ex) {
             Logger.getLogger(LOG.class.getName()).log(Level.SEVERE, null, ex);
