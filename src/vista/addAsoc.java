@@ -1,20 +1,24 @@
 package vista;
 
+import controlador.controlasoc;
+import java.util.LinkedList;
 import javax.swing.JComponent;
+import javax.swing.table.DefaultTableModel;
+import modelo.Asociado;
 
-/**
- *
- * @author pc konesh 1
- */
 public class addAsoc extends javax.swing.JInternalFrame {
 
     private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI) getUI()).getNorthPane();
     Boolean enatxt = false;
+    LinkedList<Asociado> ListadoAsociados= new LinkedList<Asociado>();
+
     public addAsoc() {
         initComponents();
         Barra.remove(0);
         enabletxtcontrol();
         btnCancelar.setVisible(false);
+        filltableall();
+//        btntest.setVisible(false);
     }
 
     public void enabletxtcontrol(){
@@ -47,12 +51,13 @@ public class addAsoc extends javax.swing.JInternalFrame {
         jLabel16 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblmuestra = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         txtAsocbucador = new javax.swing.JTextField();
         btnModificar = new javax.swing.JButton();
         btnNuevoAsoc = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
+        btntest = new javax.swing.JButton();
 
         setClosable(true);
         setTitle("Socios DM Guerrero");
@@ -164,7 +169,7 @@ public class addAsoc extends javax.swing.JInternalFrame {
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Buscar Asociado"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblmuestra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -180,10 +185,15 @@ public class addAsoc extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(50);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(50);
+        tblmuestra.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblmuestraMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblmuestra);
+        if (tblmuestra.getColumnModel().getColumnCount() > 0) {
+            tblmuestra.getColumnModel().getColumn(0).setMinWidth(50);
+            tblmuestra.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
         jLabel4.setText("Asociado");
@@ -237,6 +247,13 @@ public class addAsoc extends javax.swing.JInternalFrame {
             }
         });
 
+        btntest.setText("test");
+        btntest.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btntestActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -252,6 +269,8 @@ public class addAsoc extends javax.swing.JInternalFrame {
                         .addComponent(btnModificar)
                         .addGap(18, 18, 18)
                         .addComponent(btnCancelar)
+                        .addGap(38, 38, 38)
+                        .addComponent(btntest)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -267,7 +286,9 @@ public class addAsoc extends javax.swing.JInternalFrame {
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnModificar)
                         .addComponent(btnNuevoAsoc))
-                    .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btnCancelar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btntest)))
                 .addContainerGap(15, Short.MAX_VALUE))
         );
 
@@ -286,8 +307,9 @@ public class addAsoc extends javax.swing.JInternalFrame {
         btnNuevoAsoc.setEnabled(true);
         btnNuevoAsoc.setText("Registrar");
         if(enatxt == true){ //Entra cuando el botón está en Registrar y se preciona para cambiar y realizar un INSERT IN TO
-//            System.out.println("enatx: "+enatxt);
-//            System.out.println("Se Registró");
+            /*
+            *CODIGO AQUÍ
+            */
             
             
             btnNuevoAsoc.setText("Nuevo");
@@ -308,8 +330,10 @@ public class addAsoc extends javax.swing.JInternalFrame {
         btnModificar.setEnabled(true);
         btnModificar.setText("Guardar");
         if(enatxt == true){ //Entra cuando el botón está en Guardar y se preciona para cambiar y realizar la consulta UPDATE
-//            System.out.println("enatx: "+enatxt);
-//            System.out.println("Se modificó");
+            /*
+            *CODIGO AQUÍ
+            */
+            
             
             btnModificar.setText("Modificar");
         }
@@ -317,11 +341,53 @@ public class addAsoc extends javax.swing.JInternalFrame {
         
     }//GEN-LAST:event_btnModificarActionPerformed
 
+    private void filltableall(){
+        controlasoc ctrlasoc = new controlasoc();
+        DefaultTableModel dtm = (DefaultTableModel) tblmuestra.getModel();
+//        LinkedList<Asociado> ListadoAsociados= new LinkedList<Asociado>();
+        ListadoAsociados = ctrlasoc.Queryasocgeneral();
+        dtm.setNumRows(0);
+        
+        for(int i =0; i<ListadoAsociados.size(); i++)
+            {
+               Object [] row = {ListadoAsociados.get(i).getIdasociado(), ListadoAsociados.get(i).getNombreasociado(), ListadoAsociados.get(i).getTelefonoasociado()};
+               dtm.addRow(row);
+            }
+    }
+
+    private void btntestActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btntestActionPerformed
+            /* REVISIÓN<-------------------
+//        controlasoc ctrlasoc = new controlasoc();
+//        DefaultTableModel dtm = (DefaultTableModel) tblmuestra.getModel();
+//        ListadoAsociados = ctrlasoc.Queryasocbuscar(txtAsocbucador.getText());
+//        dtm.setNumRows(0);
+//        
+//        for(int i =0; i<ListadoAsociados.size(); i++)
+//            {
+//               Object [] row = {ListadoAsociados.get(i).getIdasociado(), ListadoAsociados.get(i).getNombreasociado(), ListadoAsociados.get(i).getTelefonoasociado()};
+//               dtm.addRow(row);
+//            }
+            REVISIÓN<-------------------*/
+    }//GEN-LAST:event_btntestActionPerformed
+
+    private void tblmuestraMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblmuestraMouseClicked
+        // TODO add your handling code here:
+        controlasoc ctrlasoc = new controlasoc();
+        DefaultTableModel dtm = (DefaultTableModel) tblmuestra.getModel();
+        int aux = tblmuestra.getSelectedRow();
+        txtNomasoc.setText(ListadoAsociados.get(aux).getNombreasociado()+ "");
+        txtTelasoc.setText(ListadoAsociados.get(aux).getTelefonoasociado()+ "");
+        txtUserPortalasoc.setText(ListadoAsociados.get(aux).getUserasociado()+ "");
+        txtPassPortalasoc.setText(ListadoAsociados.get(aux).getPassasociado()+ "");
+        txtEmailasoc.setText(ListadoAsociados.get(aux).getCorreoasociado()+ "");
+    }//GEN-LAST:event_tblmuestraMouseClicked
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevoAsoc;
+    private javax.swing.JButton btntest;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
@@ -332,7 +398,7 @@ public class addAsoc extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tblmuestra;
     private javax.swing.JTextField txtAsocbucador;
     private javax.swing.JTextField txtEmailasoc;
     private javax.swing.JTextField txtNomasoc;

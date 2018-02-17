@@ -35,7 +35,7 @@ public class LOG extends javax.swing.JFrame {
         txtuser = new javax.swing.JTextField();
         txtpass = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnIngresa = new javax.swing.JButton();
         labelnotifi = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -51,10 +51,10 @@ public class LOG extends javax.swing.JFrame {
 
         jLabel3.setText("CONTRASEÑA");
 
-        jButton1.setText("INGRESAR");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIngresa.setText("INGRESAR");
+        btnIngresa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIngresaActionPerformed(evt);
             }
         });
 
@@ -74,7 +74,7 @@ public class LOG extends javax.swing.JFrame {
                 .addContainerGap())
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(83, 83, 83)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnIngresa, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -89,7 +89,7 @@ public class LOG extends javax.swing.JFrame {
                     .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(btnIngresa)
                 .addContainerGap(61, Short.MAX_VALUE))
         );
 
@@ -119,7 +119,7 @@ public class LOG extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIngresaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIngresaActionPerformed
         // TODO add your handling code here:
         conectordb db = new conectordb();
         String usr = txtuser.getText();
@@ -134,13 +134,11 @@ public class LOG extends javax.swing.JFrame {
 //            labelnotifi.setText("");
             }else {
                 labelnotifi.setText("ERROR INGRESO NO AUTORIZADO");
-                prin.setVisible(true);
-                this.setVisible(false);
-            }
+                            }
         } catch (SQLException ex) {
             Logger.getLogger(LOG.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnIngresaActionPerformed
 
     
     public static void main(String args[]) {
@@ -176,7 +174,7 @@ public class LOG extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnIngresa;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

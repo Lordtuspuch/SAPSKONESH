@@ -1,19 +1,24 @@
 package vista;
 
+import controlador.controlasoc;
+import controlador.controlempresa;
+import java.util.LinkedList;
 import javax.swing.JComponent;
+import javax.swing.table.DefaultTableModel;
+import modelo.Asociado;
+import modelo.Empresa;
 
-/**
- *
- * @author pc konesh 1
- */
 public class consultaEmpresa extends javax.swing.JInternalFrame {
 
     private JComponent Barra = ((javax.swing.plaf.basic.BasicInternalFrameUI) getUI()).getNorthPane();
     Boolean enatxt = false;
+    LinkedList<Empresa> Listadoempresas= new LinkedList<Empresa>();
+    
     public consultaEmpresa() {
         initComponents();
         Barra.remove(0);
         enabletxtcontrol();
+        filltableall();
     }
 
     public void enabletxtcontrol(){
@@ -50,7 +55,7 @@ public class consultaEmpresa extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         txtbuscador = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblmuestra = new javax.swing.JTable();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
@@ -101,7 +106,9 @@ public class consultaEmpresa extends javax.swing.JInternalFrame {
 
         jLabel1.setText("Razón Social");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        jScrollPane1.setAutoscrolls(true);
+
+        tblmuestra.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -117,10 +124,10 @@ public class consultaEmpresa extends javax.swing.JInternalFrame {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setMinWidth(100);
-            jTable1.getColumnModel().getColumn(0).setMaxWidth(100);
+        jScrollPane1.setViewportView(tblmuestra);
+        if (tblmuestra.getColumnModel().getColumnCount() > 0) {
+            tblmuestra.getColumnModel().getColumn(0).setMinWidth(100);
+            tblmuestra.getColumnModel().getColumn(0).setMaxWidth(100);
         }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -455,6 +462,19 @@ public class consultaEmpresa extends javax.swing.JInternalFrame {
         enabletxtcontrol();
     }//GEN-LAST:event_btbmodificar_guardarActionPerformed
 
+    private void filltableall(){
+        controlempresa crtlempresa = new controlempresa();
+        DefaultTableModel dtm = (DefaultTableModel) tblmuestra.getModel();
+//        LinkedList<Asociado> Listadoempresas= new LinkedList<Asociado>();
+        Listadoempresas = crtlempresa.Queryempresageneral();
+        dtm.setNumRows(0);
+        
+        for(int i =0; i<Listadoempresas.size(); i++)
+            {
+               Object [] row = {Listadoempresas.get(i).getRFCempresa(),Listadoempresas.get(i).getRsocialempresa()};
+               dtm.addRow(row);
+            }
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btbmodificar_guardar;
@@ -485,8 +505,8 @@ public class consultaEmpresa extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
+    private javax.swing.JTable tblmuestra;
     private javax.swing.JTextField txtCalledatos;
     private javax.swing.JTextField txtColdatos;
     private javax.swing.JTextField txtEstadodatos;

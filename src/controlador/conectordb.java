@@ -29,7 +29,7 @@ public class conectordb {
     public Statement comando = null;
     public ResultSet registro;
  
-    private Connection MySQLConnect() {
+    public Connection MySQLConnect() {
  
         try {
             //Driver JDBC
@@ -55,7 +55,7 @@ public class conectordb {
         }
     }
     
-    private void Closeconnectiondb() throws SQLException{
+    public void Closeconnectiondb() throws SQLException{
         conexion.close();
 //        System.out.println("Conexión a db cerrada");
     }
@@ -82,5 +82,7 @@ public class conectordb {
         Closeconnectiondb();
         return acceso;
     }
+    
+    
     
 }

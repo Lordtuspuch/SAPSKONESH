@@ -1,9 +1,5 @@
 package vista;
 
-/**
- *
- * @author pc konesh 1
- */
 public class PRINCIPAL extends javax.swing.JFrame {
 
 

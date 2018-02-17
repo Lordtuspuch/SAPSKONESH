@@ -75,7 +75,7 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" pref="90" max="-2" attributes="0"/>
+                      <Component id="btnIngresa" min="-2" pref="90" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -94,7 +94,7 @@
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                      <Component id="btnIngresa" min="-2" max="-2" attributes="0"/>
                       <EmptySpace pref="61" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -115,12 +115,12 @@
                 <Property name="text" type="java.lang.String" value="CONTRASE&#xd1;A"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton1">
+            <Component class="javax.swing.JButton" name="btnIngresa">
               <Properties>
                 <Property name="text" type="java.lang.String" value="INGRESAR"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnIngresaActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>
