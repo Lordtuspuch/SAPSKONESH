@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vista;
 
 /**
@@ -34,7 +29,6 @@ public class PRINCIPAL extends javax.swing.JFrame {
         jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
@@ -74,7 +68,7 @@ public class PRINCIPAL extends javax.swing.JFrame {
 
         jMenu4.setText("Empresa");
 
-        jMenuItem1.setText("Agregar");
+        jMenuItem1.setText("Registrar");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jMenuItem1ActionPerformed(evt);
@@ -107,11 +101,13 @@ public class PRINCIPAL extends javax.swing.JFrame {
 
         jMenu2.setText("Asociado");
 
-        jMenuItem3.setText("Agregar");
+        jMenuItem3.setText("Agregar/Consultar");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
-
-        jMenuItem4.setText("Consultar");
-        jMenu2.add(jMenuItem4);
 
         jMenuBar1.add(jMenu2);
 
@@ -152,19 +148,26 @@ public class PRINCIPAL extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        addEmpresa addempre = new addEmpresa();
-        PRINCIPAL.desktoprincipal.add(addempre);
-        addempre.toFront();
-        addempre.show();
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
         consultaEmpresa consultaempre = new consultaEmpresa();
         PRINCIPAL.desktoprincipal.add(consultaempre);
         consultaempre.toFront();
         consultaempre.show();       
     }//GEN-LAST:event_jMenuItem2ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        addAsoc agregaAsoc = new addAsoc();
+        PRINCIPAL.desktoprincipal.add(agregaAsoc);
+        agregaAsoc.toFront();
+        agregaAsoc.show();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        addEmpresa addempre = new addEmpresa();
+        PRINCIPAL.desktoprincipal.add(addempre);
+        addempre.toFront();
+        addempre.show();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -210,7 +213,6 @@ public class PRINCIPAL extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem7;
